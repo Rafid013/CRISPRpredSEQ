@@ -1,6 +1,6 @@
 # CRISPRpred(SEQ)
 ## Dependencies
-Download anaconda for python 3.7 version from this [link](https://www.anaconda.com/distribution/#download-section) and install anaconda3. Open a new conda environment (using the command "conda create --name myenv", replace myenv with the preferred environment name). Then activate the environment (using the command "conda activate myenv", replace myenv with the preferred environment name) and install the dependencies-
+Download anaconda for python 3.7 version from this [link](https://www.anaconda.com/distribution/#download-section) and install anaconda3. Open a new conda environment (using the command "conda create --name myenv", replace myenv with the preferred environment name). Then activate the environment (using the command "conda activate myenv", replace myenv with the preferred environment name) and install the dependencies (run the script dependencies.sh) or install them separately-
 * pandas 0.24.2 or above
 * numpy 1.16.2 or above
 * scikit-learn 0.20.3 or above
