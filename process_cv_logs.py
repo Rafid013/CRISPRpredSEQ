@@ -8,7 +8,14 @@ result_roc['0.0001'] = [0]*3
 result_roc['0.001'] = [0]*3
 result_roc['0.01'] = [0]*3
 
-gapped = ''  # 'without_gapped_', ''
+
+exp_type = input("Which experiment? B or C\n")
+exp_type = exp_type.upper()
+if exp_type == 'B':
+    gapped = 'without_gapped_'
+else:
+    gapped = ''
+
 for i in range(1, 6):
     f = open('Logs/cross_validation_log_' + gapped + str(i) + '.txt', 'r')
     text = f.read()

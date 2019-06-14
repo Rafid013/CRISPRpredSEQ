@@ -3,8 +3,18 @@ from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, reca
 import pickle as pkl
 
 
-experiment = 'cv_without_gapped'  # 'cv', 'cv_without_gapped', 'crisprpred'
-gapped = 'without_gapped_'  # 'without_gapped_', ''
+exp_type = input("Which experiment? A, B or C\n")
+exp_type = exp_type.upper()
+if exp_type == 'A':
+    experiment = 'crisprpred'
+    gapped = 'without_gapped_'
+elif exp_type == 'B':
+    experiment = 'cv_without_gapped'
+    gapped = 'without_gapped_'
+else:
+    experiment = 'cv'
+    gapped = ''
+
 for i in range(1, 6):
     test_x_list = [pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'all_' + str(i) + '.h5')),
                    pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hct116_' + str(i) + '.h5', key='hct116')),

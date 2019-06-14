@@ -4,8 +4,17 @@ import pickle as pkl
 import numpy as np
 
 
-experiment = 'cv_without_gapped'  # 'cv', 'cv_without_gapped', 'crisprpred'
-gapped = 'without_gapped_'  # 'without_gapped_', ''
+exp_type = input("Which experiment? A, B or C\n")
+exp_type = exp_type.upper()
+if exp_type == 'A':
+    experiment = 'crisprpred'
+    gapped = 'without_gapped_'
+elif exp_type == 'B':
+    experiment = 'cv_without_gapped'
+    gapped = 'without_gapped_'
+else:
+    experiment = 'cv'
+    gapped = ''
 
 cells = ['ALL', 'HCT116', 'HEK293', 'HELA', 'HL60']
 
