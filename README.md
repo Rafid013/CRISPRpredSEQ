@@ -1,14 +1,16 @@
 # CRISPRpred(SEQ)
 ## Dependencies
-Download anaconda for python 3.7 version from this [link](https://www.anaconda.com/distribution/#download-section) and install anaconda3. Open a new conda environment (using the command "conda create --name myenv", replace myenv with the preferred environment name). Then activate the environment (using the command "conda activate myenv", replace myenv with the preferred environment name) and install the dependencies (run the script dependencies.sh) or install them separately-
+Download anaconda for python 3.7 version from this [link](https://www.anaconda.com/distribution/#download-section) and install anaconda3. Open a new conda environment (using the command "conda create --name myenv", replace myenv with the preferred environment name). Then activate the environment (using the command "conda activate myenv", replace myenv with the preferred environment name) and install the dependencies (run the script dependencies.sh (for linux) or dependencies.ps1 (for windows)) or install them separately-
 * pandas 0.24.2 or above
 * numpy 1.16.2 or above
 * scikit-learn 0.20.3 or above
+* pytables 3.5.1 or above
 ## Running the Experiments
 Run the python files in the following order-
 1. split_into_folds.py
 2. generate_features_folds.py
 3. append_folds.py
+
 You only have to run the codes mentioned above once unless any of the generated files are deleted (No need to run these 3 codes before each experiment)
 
 To reproduce the results of experimental setup A run the following files-
