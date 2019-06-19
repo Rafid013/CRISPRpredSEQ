@@ -23,5 +23,5 @@ for i in range(1, 6):
 
     pipeline.fit(train_x, train_y)
 
-    f = open('trained_crisprpred_' + str(i) + '.pkl', 'wb')
+    f = open('Saved Models/trained_crisprpred_' + str(i) + '.pkl', 'wb')
     pkl.dump(pipeline, f)
