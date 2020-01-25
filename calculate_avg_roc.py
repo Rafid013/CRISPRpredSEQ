@@ -1,5 +1,4 @@
 from sklearn.metrics import roc_auc_score
-import pandas as pd
 import pickle as pkl
 import numpy as np
 
@@ -33,8 +32,8 @@ for cell in cells:
             key = None
         else:
             key = cell.lower()
-        test_y = pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + cell.lower() + '_' + str(i) + '.h5',
-                                          key=key)).iloc[:, 0]
+        f3 = open('Predicted/test_y_' + gapped + cell.lower() + '_' + str(i) + '.pkl', 'rb')
+        test_y = pkl.load(f3)
         total_y += np.array(test_y).tolist()
 
     print(cell)

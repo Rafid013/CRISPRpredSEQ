@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.svm import SVC
-from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import SelectFromModel
 from sklearn.pipeline import Pipeline
