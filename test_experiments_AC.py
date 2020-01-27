@@ -36,8 +36,8 @@ for i in range(1, 6):
         test_x_all = test_x_all.append(test_x, ignore_index=True)
         test_y_all = test_y_all.append(test_y, ignore_index=True)
 
-    test_x_all.append(test_x_all)
-    test_y_all.append(test_y_all)
+    test_x_list.append(test_x_all)
+    test_y_list.append(test_y_all)
 
     cells = ['HCT116', 'HEK293', 'HELA', 'HL60', 'ALL']
 
