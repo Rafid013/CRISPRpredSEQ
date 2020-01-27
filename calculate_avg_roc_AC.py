@@ -28,10 +28,6 @@ for cell in cells:
         predicted_proba = pkl.load(f2)
         total_predicted += predicted.tolist()
         total_predicted_proba += predicted_proba[:, 1].tolist()
-        if cell == 'ALL':
-            key = None
-        else:
-            key = cell.lower()
         f3 = open('Predicted/test_y_' + gapped + cell.lower() + '_' + str(i) + '.pkl', 'rb')
         test_y = pkl.load(f3)
         total_y += np.array(test_y).tolist()

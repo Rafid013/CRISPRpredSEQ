@@ -14,8 +14,6 @@ for i in range(1, 6):
     train_x = pd.DataFrame(pd.read_hdf('Folds/train_x_' + gapped + 'all_' + str(i) + '.h5'))
     train_y = pd.DataFrame(pd.read_hdf('Folds/train_y_' + gapped + 'all_' + str(i) + '.h5')).iloc[:, 0]
 
-    cells = ['ALL', 'HCT116', 'HEK293', 'HELA', 'HL60']
-
     f_log = open('Logs/cross_validation_log_' + gapped + str(i) + '.txt', 'w')
 
     extraTree = ExtraTreesClassifier(n_estimators=500, n_jobs=-1, random_state=1)

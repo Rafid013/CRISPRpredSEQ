@@ -57,7 +57,7 @@ def position_specific(df, order, nucleotides):
 
 
 nucleotides_ = ['A', 'C', 'T', 'G']
-cells = ['hct116', 'hek293', 'hela', 'hl60']
+cells = ['hct116', 'hek293', 'hela', 'hl60', 'all']
 
 for gapped in [True, False]:
     for k in range(1, 6):
@@ -66,26 +66,55 @@ for gapped in [True, False]:
             labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
             df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
             df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
-            if gapped:
-                df_gap = gap_features(df_, nucleotides_).astype(np.int8)
-                df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
-                df_main.to_hdf('Folds/train_x_' + cell + '_' + str(k) + '.h5', key=cell)
-                labels.to_hdf('Folds/train_y_' + cell + '_' + str(k) + '.h5', key=cell)
-            else:
-                df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
-                df_main.to_hdf('Folds/train_x_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
-                labels.to_hdf('Folds/train_y_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+            df_gap = gap_features(df_, nucleotides_).astype(np.int8)
 
-            df_ = pd.read_csv('Folds/test_' + cell + '_' + str(k) + '.csv', delimiter=',')
-            labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
-            df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
-            df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
-            if gapped:
+            df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
+            df_main.to_hdf('Folds/train_x_' + cell + '_' + str(k) + '.h5', key=cell)
+            labels.to_hdf('Folds/train_y_' + cell + '_' + str(k) + '.h5', key=cell)
+
+            df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
+            df_main.to_hdf('Folds/train_x_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+            labels.to_hdf('Folds/train_y_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+
+            if cell != 'all':
+                df_ = pd.read_csv('Folds/test_' + cell + '_' + str(k) + '.csv', delimiter=',')
+                labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
+                df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
+                df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
                 df_gap = gap_features(df_, nucleotides_).astype(np.int8)
+
                 df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
                 df_main.to_hdf('Folds/test_x_' + cell + '_' + str(k) + '.h5', key=cell)
                 labels.to_hdf('Folds/test_y_' + cell + '_' + str(k) + '.h5', key=cell)
-            else:
+
                 df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
                 df_main.to_hdf('Folds/test_x_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
                 labels.to_hdf('Folds/test_y_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+
+                df_ = pd.read_csv('Leave Folds/train_leave_' + cell + '_' + str(k) + '.csv', delimiter=',')
+                labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
+                df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
+                df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
+                df_gap = gap_features(df_, nucleotides_).astype(np.int8)
+
+                df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
+                df_main.to_hdf('Leave Folds/train_leave_x_' + cell + '_' + str(k) + '.h5', key=cell)
+                labels.to_hdf('Leave Folds/train_leave_y_' + cell + '_' + str(k) + '.h5', key=cell)
+
+                df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
+                df_main.to_hdf('Leave Folds/train_leave_x_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+                labels.to_hdf('Leave Folds/train_leave_y_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+
+                df_ = pd.read_csv('Leave Folds/test_leave_' + cell + '_' + str(k) + '.csv', delimiter=',')
+                labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
+                df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
+                df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
+                df_gap = gap_features(df_, nucleotides_).astype(np.int8)
+
+                df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
+                df_main.to_hdf('Leave Folds/test_leave_x_' + cell + '_' + str(k) + '.h5', key=cell)
+                labels.to_hdf('Leave Folds/test_leave_y_' + cell + '_' + str(k) + '.h5', key=cell)
+
+                df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
+                df_main.to_hdf('Leave Folds/test_leave_x_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
+                labels.to_hdf('Leave Folds/test_leave_y_without_gapped_' + cell + '_' + str(k) + '.h5', key=cell)
