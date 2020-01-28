@@ -21,13 +21,13 @@ for i in range(1, 6):
                    pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hl60_' + str(i) + '.h5', key='hl60'))]
 
     test_y_list = [pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hct116_' + str(i) + '.h5',
-                                            key='hct116')).iloc[:, 0],
+                                            key='hct116')),
                    pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hek293_' + str(i) + '.h5',
-                                            key='hek293')).iloc[:, 0],
+                                            key='hek293')),
                    pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hela_' + str(i) + '.h5',
-                                            key='hela')).iloc[:, 0],
+                                            key='hela')),
                    pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hl60_' + str(i) + '.h5',
-                                            key='hl60')).iloc[:, 0]]
+                                            key='hl60'))]
 
     test_x_all = pd.DataFrame()
     test_y_all = pd.DataFrame()

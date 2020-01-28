@@ -27,7 +27,8 @@ for leave_cell in cells:
                                           leave_cell.lower() + '_' + str(i) + '.h5',
                                           key=leave_cell.lower()))
 
-        f = open('Saved Models/trained_' + experiment + '_leave_' + leave_cell.lower() + '_' + str(i) + '.pkl', 'rb')
+        f = open('Saved Models LOC/trained_' + experiment + '_' + leave_cell.lower() + '_' + str(i) + '.pkl',
+                 'rb')
         model = pkl.load(f)
 
         f_log.write('Fold: ' + str(i) + '\n')
