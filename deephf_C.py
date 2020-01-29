@@ -27,7 +27,7 @@ train_data = train_data.dropna().reset_index(drop=True)
 
 test_data = test_data.dropna().reset_index(drop=True)
 
-extraTree = ExtraTreesRegressor(n_estimators=500, n_jobs=-1, random_state=1)
+extraTree = ExtraTreesRegressor(n_estimators=500, n_jobs=-1, random_state=1, verbose=2)
 
 steps = [('SFM', SelectFromModel(estimator=extraTree)),
          ('scaler', StandardScaler()),
@@ -51,13 +51,13 @@ trained_rf = sfm.estimator_
 scaler = model['scaler']
 svm = model['SVM']
 
-f = open('DEEPHF Models/B_sfm_' + str(cas9_type) + '.pkl', 'wb')
+f = open('DEEPHF Models/C_sfm_' + str(cas9_type) + '.pkl', 'wb')
 pkl.dump(sfm, f)
 
-f = open('DEEPHF Models/B_rf_' + str(cas9_type) + '.pkl', 'wb')
+f = open('DEEPHF Models/C_rf_' + str(cas9_type) + '.pkl', 'wb')
 pkl.dump(trained_rf, f)
 
-f = open('DEEPHF Models/B_scaler_' + str(cas9_type) + '.pkl', 'wb')
+f = open('DEEPHF Models/C_scaler_' + str(cas9_type) + '.pkl', 'wb')
 pkl.dump(scaler, f)
 
-svm.save_to_file('DEEPHF Models/B_svm_' + str(cas9_type) + '.txt')
+svm.save_to_file('DEEPHF Models/C_svm_' + str(cas9_type) + '.txt')

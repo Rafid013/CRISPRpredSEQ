@@ -27,7 +27,7 @@ train_data = train_data.dropna().reset_index(drop=True)
 
 test_data = test_data.dropna().reset_index(drop=True)
 
-extraTree = ExtraTreesRegressor(n_estimators=500, n_jobs=-1, random_state=1)
+extraTree = ExtraTreesRegressor(n_estimators=500, n_jobs=-1, random_state=1, verbose=2)
 
 steps = [('SFM', SelectFromModel(estimator=extraTree)),
          ('scaler', StandardScaler()),
