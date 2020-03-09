@@ -33,6 +33,11 @@ for i in range(1, 6):
         train_all = train_all.append(train_list[cell][i - 1], ignore_index=True)
     train_list['all'].append(train_all)
     train_all.to_csv('Folds/train_all_' + str(i) + '.csv', index=False, sep=',')
+    train_all_set = set(tuple(line) for line in train_all.values)
+    for cell in cells:
+        test_set = set(tuple(line) for line in test_list[cell][i - 1].values)
+        test = pd.DataFrame(list(test_set.difference(train_all_set)), columns=['sgRNA', 'label'])
+        test.to_csv('Folds/test_removed_' + cell + '_' + str(i) + '.csv', index=False, sep=',')
 
 
 # append train data for all cells except one for each fold (leave one out)
@@ -44,15 +49,5 @@ for i in range(1, 6):
                 train_loc = train_loc.append(train_list[cell][i - 1], ignore_index=True)
         train_loc_list[leave_cell].append(train_loc)
         train_loc.to_csv('Leave Folds/train_leave_' + leave_cell + '_' + str(i) + '.csv', index=False, sep=',')
-
-
-# remove common data between train (leave one cell) and test (for left out cell) for each fold
-for i in range(1, 6):
-    for leave_cell in cells:
         test_loc = test_list[leave_cell][i - 1]
-        train_loc = train_list[leave_cell][i - 1]
-        train_set = set([tuple(line) for line in train_loc.values])
-        test_set = set([tuple(line) for line in test_loc.values])
-        test_set = test_set.difference(train_set)
-        test = pd.DataFrame(list(test_set), columns=['sgRNA', 'label'])
-        test.to_csv('Leave Folds/test_leave_' + leave_cell + '_' + str(i) + '.csv', index=False, sep=',')
+        test_loc.to_csv('Leave Folds/test_leave_' + leave_cell + '_' + str(i) + '.csv', index=False, sep=',')

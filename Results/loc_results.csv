@@ -1,7 +1,7 @@
 Leave-cell type-out testing,leave-HCT116-out,leave-HEK293T-out,leave-HELA-out,leave-HL60-out
-Experiment D (A),0.881,0.436,0.778,0.636
-Experiment E (B),0.893,0.431,0.816,0.680
-Experiment F (C),0.896,0.428,0.823,0.693
+Experiment D,0.885,#,0.798,0.688
+Experiment E,0.894,#,0.825,0.692
+Experiment F,0.894,#,0.823,0.754
 DeepCRISPR(CNN+pre-training+data augmentation),0.919,0.506,0.82,0.643
 DeepCRISPR(Sequence feature-only),0.887,0.474,0.788,0.584
 Retrained sgRNA Designer,0.72,0.457,0.636,0.556

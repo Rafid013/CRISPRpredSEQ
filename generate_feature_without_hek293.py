@@ -57,15 +57,17 @@ def position_specific(df, order, nucleotides):
 
 
 nucleotides_ = ['A', 'C', 'T', 'G']
-cells = ['hct116', 'hek293', 'hela', 'hl60']
-for cell in cells:
-    df_ = pd.read_csv('Data/' + cell + '.csv', delimiter=',')
-    labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
-    df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
-    df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
-    df_gap = gap_features(df_, nucleotides_).astype(np.int8)
-    df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False)
-    df_main.to_hdf('Data/features_' + cell + '.h5', key=cell)
-    labels.to_hdf('Data/labels_' + cell + '.h5', key=cell)
-    df_main.to_csv('Data/features_' + cell + '.csv', index=False, sep=',')
-    labels.to_csv('Data/labels_' + cell + '.csv', index=False, sep=',')
+
+df_ = pd.read_csv('Folds/train_without_hek293.csv', delimiter=',')
+labels = pd.DataFrame(df_['label'].astype(np.int8), columns=['label'])
+df_pos_ind = position_independent(df_, 4, nucleotides_).astype(np.int8)
+df_pos_spe = position_specific(df_, 4, nucleotides_).astype(np.int8)
+df_gap = gap_features(df_, nucleotides_).astype(np.int8)
+
+df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
+df_main.to_hdf('Folds/train_without_hek293_x.h5', key='hek293')
+labels.to_hdf('Folds/train_without_hek293_y.h5', key='hek293')
+
+df_main = pd.concat([df_pos_ind, df_pos_spe], axis=1, sort=False).astype(np.int8)
+df_main.to_hdf('Folds/train_without_hek293_x_without_gapped.h5', key='hek293')
+labels.to_hdf('Folds/train_without_hek293_y_without_gapped.h5', key='hek293')

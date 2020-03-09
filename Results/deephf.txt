@@ -20,3 +20,14 @@ SpearmanrResult(correlation=0.82539994152157, pvalue=0.0)
 
 SpCas9-HF1
 SpearmanrResult(correlation=0.8156324287052178, pvalue=0.0)
+
+Experiment C:
+
+WT-SpCas9
+SpearmanrResult(correlation=0.8381091240611634, pvalue=0.0)
+
+eSpCas9
+SpearmanrResult(correlation=0.8298341304841123, pvalue=0.0)
+
+SpCas9-HF1
+SpearmanrResult(correlation=0.8210520289736835, pvalue=0.0)
