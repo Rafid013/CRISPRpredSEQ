@@ -57,7 +57,7 @@ def position_specific(df, order, nucleotides):
 
 
 nucleotides_ = ['A', 'C', 'T', 'G']
-cells = ['hct116', 'hek293', 'hela', 'hl60']
+cells = ['hct116', 'hek293', 'hela', 'hl60', 'all']
 
 for k in range(1, 6):
     for cell in cells:
