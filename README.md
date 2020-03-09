@@ -9,23 +9,22 @@ Download anaconda for python 3.7 version from this [link](https://www.anaconda.c
 Run the python files in the following order-
 1. split_into_folds.py
 2. generate_features_folds.py
-3. append_folds.py
+3. generate_feature_folds_without_hek293_loco.py
 
 You only have to run the codes mentioned above once unless any of the generated files are deleted (No need to run these 3 codes before each experiment)
 
-To reproduce the results of experimental setup A run the following files-
-1. experimentA.py
-2. test_experiments.py (enter A when prompted)
-3. calculate_avg_roc.py (enter A when prompted)
+To reproduce the results of experimental setup A, B or C run the following files-
+1. experimentA.py or experimentB.py or experimentC.py (depending on the experimental result you want to reproduce)
+2. process_cv_logs.py (this is for experiments B and C only, enter B or C when prompted, run this file to get the detailed result of cross validation, the produced result will be found in Results/gridsearch_roc_without_gapped_result.csv)
+3. test_experiments_AC.py (enter A, B or C when prompted)
+4. calculate_avg_roc_AC.py (enter A, B or C when prompted)
 
-To reproduce the results of experimental setup B run the following files-
-1. experimentB.py
-2. process_cv_logs.py (enter B when prompted, run this file to get the detailed result of cross validation, the produced result will be found in Results/gridsearch_roc_without_gapped_result.csv)
-3. test_experiments.py (enter B when prompted)
-4. calculate_avg_roc.py (enter B when prompted)
+To reproduce the results of experimental setup D, E or F run the following files-
+1. experimentD.py or experimentE.py or experimentF.py
+2. test_experiment_without_hek293_DF.py (enter D, E or F when prompted)
+3. calculate_avg_roc_without_hek293_DF.py (enter D, E or F when prompted)
 
-To reproduce the results of experimental setup C run the following files-
-1. experimentC.py
-2. process_cv_logs.py (enter C when prompted, run this file to get the detailed result of cross validation, the produced result will be found in Results/gridsearch_roc_result.csv)
-3. test_experiments.py (enter C when prompted)
-4. calculate_avg_roc.py (enter C when prompted)
+To reproduce the results of experiments on DeepHF data-
+1. Install thudersvm for gpu
+2. Run generate_features_deephf.py
+3. Run deephf_A.py or deephf_B.py or deephf_C.py
