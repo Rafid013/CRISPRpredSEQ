@@ -28,3 +28,14 @@ To reproduce the results of experiments on DeepHF data-
 1. Install thudersvm for gpu
 2. Run generate_features_deephf.py
 3. Run deephf_A.py or deephf_B.py or deephf_C.py
+
+## Using Pretrained Models for Prediction
+Use a csv file to provide the sgRNA sequences as input. Follow the format given in example1.csv. The sgRNA sequence must be 20-mer with NGG PAM sequence at the end resulting in a 23-mer sequence. For prediction-
+1. Use the command- **python generate_features.py \<filepath\>**. This will generate the features for the given sequences. For example, if the path to your csv file is **Data/example.csv**, use the command **python generate_features.py Data/example.csv**.
+2. To predict using pretrained versions of model A, B or C, run the command **python pretrained_N.py \<filepath\>** (N can be A, B or C in the command). For example, run **python pretrained_A.py \<filepath\>** if you want to predict using model A. The **\<filepath\>** must be provided in this case (this is the **\<filepath\>** to the original input csv file).
+
+## Training Models Using New Data
+Use a csv file to provide the sgRNA sequences and labels as input. Follow the format given in example2.csv. The sgRNA sequence must be 20-mer with NGG PAM sequence at the end resulting in a 23-mer sequence. Follow the steps below-
+1. Use the command- **python generate_features.py \<filepath\>**. This will generate the features for the given sequences. For example, if the path to your csv file is **Data/example.csv**, use the command **python generate_features.py Data/example.csv**.
+2. To train your own versions of model A, B or C using new data, run the command **python train_N.py \<filepath\>** (N can be A, B or C in the command). For example, run **python train_B.py \<filepath\>** if you want to train model B. The **\<filepath\>** must be provided in this case (this is the **\<filepath\>** to the original input csv file).
+3. To predict using your own versions of trained model A, B or C, run the command **python predict_N.py \<filepath\>** (N can be A, B or C in the command). For example, run **python predict_B.py \<filepath\>** if you want to predict using the model B you just trained. The **\<filepath\>** must be provided in this case (this is the **\<filepath\>** to the original input csv file).
