@@ -65,7 +65,9 @@ filename = os.path.splitext(os.path.basename(filepath))[0]
 
 df = pd.read_csv(filepath, delimiter=',')
 
-labels = pd.DataFrame(df['label'].astype(np.int8), columns=['label'])
+if 'label' in df.columns:
+    labels = pd.DataFrame(df['label'].astype(np.int8), columns=['label'])
+    labels.to_hdf('Data/' + filename + '_labels.h5', key='labels')
 
 df_pos_ind = position_independent(df, 4, nucleotides_).astype(np.int8)
 df_pos_spe = position_specific(df, 4, nucleotides_).astype(np.int8)
@@ -74,7 +76,6 @@ df_gap = gap_features(df, nucleotides_).astype(np.int8)
 df_pos_ind.to_hdf('Data/' + filename + '_pi.h5', key='pi')
 df_pos_spe.to_hdf('Data/' + filename + '_ps.h5', key='ps')
 df_gap.to_hdf('Data/' + filename + '_gap.h5', key='gap')
-labels.to_hdf('Data/' + filename + '_labels.h5', key='labels')
 
 # df_main = pd.concat([df_pos_ind, df_pos_spe, df_gap], axis=1, sort=False).astype(np.int8)
 # df_main.to_hdf('Data/' + filename + '_features.h5', key='features')
