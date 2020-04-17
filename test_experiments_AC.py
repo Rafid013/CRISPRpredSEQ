@@ -15,18 +15,18 @@ else:
     gapped = ''
 
 for i in range(1, 6):
-    test_x_list = [pd.DataFrame(pd.read_hdf('Folds/test_removed_x_' + gapped + 'hct116_' + str(i) + '.h5', key='hct116')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_x_' + gapped + 'hek293_' + str(i) + '.h5', key='hek293')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_x_' + gapped + 'hela_' + str(i) + '.h5', key='hela')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_x_' + gapped + 'hl60_' + str(i) + '.h5', key='hl60'))]
+    test_x_list = [pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hct116_' + str(i) + '.h5', key='hct116')),
+                   pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hek293_' + str(i) + '.h5', key='hek293')),
+                   pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hela_' + str(i) + '.h5', key='hela')),
+                   pd.DataFrame(pd.read_hdf('Folds/test_x_' + gapped + 'hl60_' + str(i) + '.h5', key='hl60'))]
 
-    test_y_list = [pd.DataFrame(pd.read_hdf('Folds/test_removed_y_' + gapped + 'hct116_' + str(i) + '.h5',
+    test_y_list = [pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hct116_' + str(i) + '.h5',
                                             key='hct116')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_y_' + gapped + 'hek293_' + str(i) + '.h5',
+                   pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hek293_' + str(i) + '.h5',
                                             key='hek293')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_y_' + gapped + 'hela_' + str(i) + '.h5',
+                   pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hela_' + str(i) + '.h5',
                                             key='hela')),
-                   pd.DataFrame(pd.read_hdf('Folds/test_removed_y_' + gapped + 'hl60_' + str(i) + '.h5',
+                   pd.DataFrame(pd.read_hdf('Folds/test_y_' + gapped + 'hl60_' + str(i) + '.h5',
                                             key='hl60'))]
 
     test_x_all = pd.DataFrame()
@@ -44,7 +44,7 @@ for i in range(1, 6):
     f = open('Saved Models/trained_' + experiment + '_' + str(i) + '.pkl', 'rb')
     model = pkl.load(f)
 
-    f_log = open('Logs/test_removed_' + experiment + '_log_' + str(i) + '.txt', 'w')
+    f_log = open('Logs/test_' + experiment + '_log_' + str(i) + '.txt', 'w')
 
     for test_x, test_y, cell in zip(test_x_list, test_y_list, cells):
         predicted = model.predict(test_x)
@@ -60,12 +60,12 @@ for i in range(1, 6):
         f_log.write("TEST RECALL: " + str(rec) + "\n")
         f_log.write('.........\n\n\n\n\n\n\n')
 
-        f_predicted = open('Predicted/' + experiment + '_predicted_removed_' + cell.lower() + '_' + str(i) + '.pkl', 'wb')
+        f_predicted = open('Predicted/' + experiment + '_predicted_' + cell.lower() + '_' + str(i) + '.pkl', 'wb')
         pkl.dump(predicted, f_predicted)
 
-        f_predicted_proba = open('Predicted/' + experiment + '_predicted_proba_removed_' + cell.lower() + '_' + str(i) + '.pkl',
+        f_predicted_proba = open('Predicted/' + experiment + '_predicted_proba_' + cell.lower() + '_' + str(i) + '.pkl',
                                  'wb')
         pkl.dump(predicted_proba, f_predicted_proba)
 
-        f_test_y = open('Predicted/' + experiment + '_test_y_removed_' + gapped + cell.lower() + '_' + str(i) + '.pkl', 'wb')
+        f_test_y = open('Predicted/' + experiment + '_test_y_' + gapped + cell.lower() + '_' + str(i) + '.pkl', 'wb')
         pkl.dump(test_y, f_test_y)
