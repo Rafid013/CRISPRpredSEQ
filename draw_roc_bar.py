@@ -16,7 +16,7 @@ ax.legend(loc='upper right', prop=fontP, ncol=2)
 ax.set_ylabel('ROC-AUC')
 ax.set_ylim(0, 1)
 
-plt.savefig('Figures/roc_comparison_ac.png', dpi=500)
+plt.savefig('Figures/roc_comparison_ac.eps')
 
 
 df = pd.read_csv('Results/final_loc_results.csv', delimiter=',')
@@ -31,4 +31,4 @@ ax.legend(loc='upper right', prop=fontP, ncol=2)
 ax.set_ylabel('ROC-AUC')
 ax.set_ylim(0, 1)
 
-plt.savefig('Figures/roc_comparison_df.png', dpi=500)
+plt.savefig('Figures/roc_comparison_df.eps')
