@@ -39,3 +39,29 @@ Use a csv file to provide the sgRNA sequences and labels as input. Follow the fo
 1. Use the command- **python generate_features.py \<filepath\>**. This will generate the features for the given sequences. For example, if the path to your csv file is **Data/example.csv**, use the command **python generate_features.py Data/example.csv**.
 2. To train your own versions of model A, B or C using new data, run the command **python train_N.py \<filepath\>** (N can be A, B or C in the command). For example, run **python train_B.py \<filepath\>** if you want to train model B. The **\<filepath\>** must be provided in this case (this is the **\<filepath\>** to the original input csv file).
 3. To predict using your own versions of trained model A, B or C, run the command **python predict_N.py \<filepath\>** (N can be A, B or C in the command). For example, run **python predict_B.py \<filepath\>** if you want to predict using the model B you just trained. The **\<filepath\>** must be provided in this case (this is the **\<filepath\>** to the original input csv file).
+
+## Citation
+Muhammad Rafid, A.H., Toufikuzzaman, M., Rahman, M.S. et al. CRISPRpred(SEQ): a sequence-based method for sgRNA on target activity prediction using traditional machine learning. BMC Bioinformatics 21, 223 (2020). https://doi.org/10.1186/s12859-020-3531-9
+
+```
+﻿@Article{MuhammadRafid2020,
+author={Muhammad Rafid, Ali Haisam
+and Toufikuzzaman, Md.
+and Rahman, Mohammad Saifur
+and Rahman, M. Sohel},
+title={CRISPRpred(SEQ): a sequence-based method for sgRNA on target activity prediction using traditional machine learning},
+journal={BMC Bioinformatics},
+year={2020},
+month={Jun},
+day={01},
+volume={21},
+number={1},
+pages={223},
+abstract={The latest works on CRISPR genome editing tools mainly employs deep learning techniques. However, deep learning models lack explainability and they are harder to reproduce. We were motivated to build an accurate genome editing tool using sequence-based features and traditional machine learning that can compete with deep learning models.},
+issn={1471-2105},
+doi={10.1186/s12859-020-3531-9},
+url={https://doi.org/10.1186/s12859-020-3531-9}
+}
+```
+
+
