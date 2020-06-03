@@ -49,7 +49,8 @@ author={Muhammad Rafid, Ali Haisam
 and Toufikuzzaman, Md.
 and Rahman, Mohammad Saifur
 and Rahman, M. Sohel},
-title={CRISPRpred(SEQ): a sequence-based method for sgRNA on target activity prediction using traditional machine learning},
+title={CRISPRpred(SEQ): a sequence-based method for sgRNA on target activity prediction   
+using traditional machine learning},
 journal={BMC Bioinformatics},
 year={2020},
 month={Jun},
@@ -57,7 +58,6 @@ day={01},
 volume={21},
 number={1},
 pages={223},
-abstract={The latest works on CRISPR genome editing tools mainly employs deep learning techniques. However, deep learning models lack explainability and they are harder to reproduce. We were motivated to build an accurate genome editing tool using sequence-based features and traditional machine learning that can compete with deep learning models.},
 issn={1471-2105},
 doi={10.1186/s12859-020-3531-9},
 url={https://doi.org/10.1186/s12859-020-3531-9}
