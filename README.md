@@ -57,7 +57,8 @@ Muhammad Rafid, A.H., Toufikuzzaman, M., Rahman, M.S. et al. CRISPRpred(SEQ): a 
     day={01},
     volume={21},
     number={1},
-    pages={223},
+    pages={1--13},
+    publisher={BioMed Central},
     issn={1471-2105},
     doi={10.1186/s12859-020-3531-9},
     url={https://doi.org/10.1186/s12859-020-3531-9}
